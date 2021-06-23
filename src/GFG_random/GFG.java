@@ -1,14 +1,31 @@
 package GFG_random;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Stack;
+import java.util.*;
 
 public class GFG {
    public static void main(String[] args) {
-      System.out.println(noOfDistinctPairsToSum(new int[]{1, 2, 1, 2}, 3));
+      System.out.println(noOfDistinctPairsToSumV2(new int[]{1, 5, 7, -1}, 6));
    }
+
+
+   // using hashset in single traversal works fine here
+   private static int noOfDistinctPairsToSumV2(int[] arr, int sum) {
+//      System.out.println(noOfDistinctPairsToSumV2(new int[]{1, 5, 7, -1}, 6));
+      Map<Integer, Integer> map = new HashMap<>();
+      int count = 0;
+      for (Integer i : arr) {
+         if (map.containsKey(i) || map.containsKey(sum - i)) {
+            if (map.get(sum - i) > 0) {
+               count += 1;
+               map.put(sum - i, map.get(sum - i) - 1);
+            }
+         } else {
+            map.put(i, 1);
+         }
+      }
+      return count;
+   }
+
 
    private static int noOfDistinctPairsToSum(int[] arr, int sum) {
 //      System.out.println(noOfDistinctPairsToSum(new int[]{1, 2, 1, 2}, 3));

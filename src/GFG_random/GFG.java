@@ -4,8 +4,26 @@ import java.util.*;
 
 public class GFG {
    public static void main(String[] args) {
-      System.out.println(noOfPairToCertainConditionV2(new int[]{199, 100, 200, 400, 300, 500, 600, 200}));
+//      System.out.println(cSwapping(new int[]{1, 10, 100, 1000, 10000, 100000, 1000000, 10000000, 100000000, 1000000000}));
+      System.out.println(cSwapping(new int[]{7, 8, 1, 1, 4, 9, 9, 6, 8, 2, 4, 1, 1, 9, 5, 5, 5, 3, 6, 4}));
+      System.out.println(cSwapping(new int[]{1, 7, 1}));
 
+   }
+
+   // https://atcoder.jp/contests/abc206/tasks/abc206_c
+   private static int cSwapping(int[] arr) {
+      int count = 0;
+      Arrays.sort(arr); // O(NLogN)
+      System.out.println(Arrays.toString(arr));
+      int n = 0;
+      for (int i = 0; i < arr.length - 1; i++) {
+         if (arr[i] != arr[i + 1]) {
+            n += 1;
+         }
+      }
+      n += 1;
+      count = n * (n - 1) / 2;
+      return count;
    }
 
    private static int noOfPairToCertainConditionV2(int[] arr) {
